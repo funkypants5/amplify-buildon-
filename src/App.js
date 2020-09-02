@@ -165,7 +165,7 @@ class App extends Component {
   };
 
   uploadImage = () => {
-    SetS3Config("amplifys3upload101607-dev", "protected");
+    //SetS3Config("amplifys3upload101607-dev", "protected");
     Storage.put(this.upload.files[0].name,
                 this.upload.files[0],
                 { contentType: this.upload.files[0].type },
