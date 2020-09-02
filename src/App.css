@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  height: 140vh;
+  position: relative; top: 0; right: 0; bottom: 0; left: 0; z-index: 0;
 }
 
 .App-logo {
@@ -13,18 +15,98 @@
   }
 }
 
+
+amplify-authenticator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  height: 100vh;
+}
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+#bot{position: initial; top: 0; right: 0; bottom: 0; left: 0; z-index: 50;}
+/*#particles-js{
+  height:100%;
+  position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 1; 
+}
+*/
+
+.instructions{
+  color: #221709;
+}
+#List{
+  color: #1f160a;
+  
+  width: 740px;
+  text-align: left;
+  font-weight: bold;
+  padding-left: 10px;
+  border: 3px ridge black;
+  background-color:burlywood;
+  /*background-color:white;*/
+}
+#Upload{
+  text-align: center;
+}
+
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  /*background-color: white;*/
+  position: relative; z-index: -1;
+  color: white;
+  min-height: 50vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color:  #61dafb;
+  /*background-image: url('https://cdn.discordapp.com/attachments/735083933653270588/738680197641011270/Test.jpg');
+  /*background-size: 100;
+  background-repeat: no-repeat;
+  */
+  
+}
+h3{
+  margin:0;
+  padding:0;
+  color: #61dafb;
+}
+h2{
+  margin:0;
+  padding:0;
+  color: #61dafb;
+}
+h1{
+  margin:10;
+  padding:0;
+}
+.UploadHeader{
+  color: rgb(32, 175, 185);
+}
+
+.App{
+  background-color: #282c34;
+  /*background-color: white;*/
+
+}
+.ChatbotHeader{
+  color: #61dafb;
 }
 
 .App-link {
+  color: #61dafb;
+}
+Instructions{
   color: #61dafb;
 }
 
