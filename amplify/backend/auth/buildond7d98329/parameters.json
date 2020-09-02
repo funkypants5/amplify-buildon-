@@ -1,6 +1,6 @@
 {
     "identityPoolName": "buildond7d98329_identitypool_d7d98329",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "buildod7d98329",
     "userPoolName": "buildond7d98329_userpool_d7d98329",
     "autoVerifiedAttributes": [
