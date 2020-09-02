@@ -1,5 +1,6 @@
-  
 import React, { Component } from 'react';
+import Amplify, { Interactions, Storage } from 'aws-amplify';
+import { ChatBot, AmplifyTheme } from 'aws-amplify-react';
 import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 //import {withAuthenticator} from 'aws-amplify-react';
 import Particles from 'react-particles-js';
@@ -17,7 +18,15 @@ Amplify.configure({
     identityPoolId: 'us-east-1:6021490f-2e8e-4b46-a341-d6cc37c2ad61',
     region: 'us-east-1'
   },
-  
+  Interactions: {
+    bots: {
+      "SuppBot": {
+        "name": "SuppBot",
+        "alias": "$LATEST",
+        "region": "us-east-1",
+      },
+    }
+  }
 });
 
 Storage.configure({
@@ -155,7 +164,20 @@ class App extends Component {
     response: ""
   };
 
- 
+  uploadImage = () => {
+    //SetS3Config("amplifys3upload150524-dev", "protected");
+    Storage.put(this.upload.files[0].name,
+                this.upload.files[0],
+                { contentType: this.upload.files[0].type },
+                )
+      .then(result => {
+        this.upload = null;
+        this.setState({ response: "Success, uploading file!" });
+      })
+      .catch(err => {
+        this.setState({ response: `Unable to upload file: ${err}` });
+      });
+  };
 
   
   handleComplete(err, confirmation) {
@@ -194,7 +216,16 @@ class App extends Component {
         </div>
         
 
-      
+        <ChatBot id="bot"
+          title="SuppBot"
+          theme={myTheme}
+          botName="SuppBot"
+          welcomeMessage="Welcome! I'm SuppBot, how can I help you today?"
+          //onComplete={this.handleComplete.bind(this)}
+          
+          clearOnComplete={false}
+          conversationModeOn={false}
+        />
         <div id="Upload">
         <h2 className= 'UploadHeader'>Upload your completed form here</h2>
         <input
