@@ -1,7 +1,5 @@
   
 import React, { Component } from 'react';
-import Amplify, { Interactions, Storage } from 'aws-amplify';
-import { ChatBot, AmplifyTheme } from 'aws-amplify-react';
 import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 //import {withAuthenticator} from 'aws-amplify-react';
 import Particles from 'react-particles-js';
