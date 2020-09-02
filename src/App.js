@@ -15,10 +15,19 @@ Amplify.configure(aws_exports);
 Amplify.configure(awsconfig);
 Amplify.configure({
   Auth: {
-    identityPoolId: 'us-east-1:6021490f-2e8e-4b46-a341-d6cc37c2ad61',
+    identityPoolId: 'us-east-1:2178697d-e85b-40e3-aaf6-64082a6186a3',
     region: 'us-east-1'
   },
-
+  Interactions: {
+    bots: {
+      "SuppBot": {
+        "name": "SuppBot",
+        "alias": "$LATEST",
+        "region": "us-east-1",
+      },
+    }
+  }
+});
 
 Storage.configure({
 customPrefix: {public:''}
@@ -156,7 +165,7 @@ class App extends Component {
   };
 
   uploadImage = () => {
-    //SetS3Config("amplifys3upload101607-dev", "protected");
+    //SetS3Config("amplifys3upload150524-dev", "protected");
     Storage.put(this.upload.files[0].name,
                 this.upload.files[0],
                 { contentType: this.upload.files[0].type },
@@ -171,7 +180,15 @@ class App extends Component {
   };
 
   
+  handleComplete(err, confirmation) {
+    if (err) {
+      alert('Bot conversation failed')
+      return;
+    }
 
+    alert('Success: ' + JSON.stringify(confirmation, null, 2));
+    return 'Thank you for using SuppBot! Should you require more assistance, Please contact ACRA!';
+  }
 
   render() {
     return (
@@ -179,11 +196,36 @@ class App extends Component {
       <div className="App">
         
 
-            <h1> Click here for layout </h1>
+        <AmplifySignOut button-text="Sign Out"></AmplifySignOut>
+        <header className="App-header">
+          <h1 className="App-title">Welcome to SuppBot!</h1>
+          <h2>Live Smart Singapore Hackathon(ACRA)</h2>
+          <h2>By Team SPx</h2>
+        </header>
+        <div id="List">
+          <h2 className="instructions">Instructions to submit a waiver appeal</h2>
+            <ol >
+              <li>Ask SuppBot for the link to download the waiver form</li>
+              <li>Submit the form with the uploader below</li>
+              <li>You will then be notified of the status within minutes</li>
+              <li>If you do not receive an email, please double check the email in the form you submitted</li>
+              <li>If you still did not receive an email, Please proceed to contact ACRA</li>
+              <li>Alternatively, you can choose to schedule an appointment with ACRA by using SuppBot</li>
+              <li>Just type "Schedule an appointment" and answer the prompts given by the bot</li>
+            </ol>
         </div>
         
 
-       
+        <ChatBot id="bot"
+          title="SuppBot"
+          theme={myTheme}
+          botName="SuppBot"
+          welcomeMessage="Welcome! I'm SuppBot, how can I help you today?"
+          //onComplete={this.handleComplete.bind(this)}
+          
+          clearOnComplete={false}
+          conversationModeOn={false}
+        />
         <div id="Upload">
         <h2 className= 'UploadHeader'>Upload your completed form here</h2>
         <input
