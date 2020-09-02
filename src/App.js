@@ -15,7 +15,7 @@ Amplify.configure(aws_exports);
 Amplify.configure(awsconfig);
 Amplify.configure({
   Auth: {
-    identityPoolId: 'us-east-1:2178697d-e85b-40e3-aaf6-64082a6186a3',
+    identityPoolId: 'us-east-1:975afbfe-dd71-4393-b6a8-f72b02daf7b8',
     region: 'us-east-1'
   },
   Interactions: {
